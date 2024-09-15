@@ -25,11 +25,11 @@ const connectDB = async () => {
 
 // Middleware setup
 const corsOptions = {
-  // origin: "http://localhost:3000",
-  origin:['http://localhost:3000','https://work-grid-frontend.vercel.app/'],
-  credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization'], // Explicitly allow required headers
-  optionsSuccessStatus: 200,
+  origin: ['http://localhost:3000', 'https://work-grid-frontend.vercel.app'], // Allowed origins
+  credentials: true, // Allow credentials (cookies, etc.)
+  methods: "GET, POST, PUT, DELETE, OPTIONS", // Allow all these methods
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'], // Allow these headers
+  optionsSuccessStatus: 200, // For legacy browsers that choke on 204
 };
 
 app.use(cors(corsOptions));
