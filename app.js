@@ -26,7 +26,7 @@ const connectDB = async () => {
 // Middleware setup
 const corsOptions = {
   // origin: "http://localhost:3000",
-  origin:'https://work-grid-frontend.vercel.app/',
+  origin:['https://work-grid-frontend.vercel.app/','http://localhost:3000'],
   credentials: true,
 };
 
