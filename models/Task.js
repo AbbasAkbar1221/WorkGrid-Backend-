@@ -1,4 +1,3 @@
-// models/task.js
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
@@ -8,10 +7,10 @@ const subtaskSchema = new Schema(
       type: String,
       required: true,
     },
-    completed:{
+    completed: {
       type: Boolean,
-      default:false
-    }
+      default: false,
+    },
   },
   { timestamps: true }
 );
@@ -22,8 +21,8 @@ const taskSchema = new Schema(
       type: String,
       required: true,
     },
-    description :{
-      type : String
+    description: {
+      type: String,
     },
     date: {
       type: Date,

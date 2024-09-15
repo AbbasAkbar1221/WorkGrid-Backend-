@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const authenticateToken = require("../midddleware/authenticateToken"); // Corrected path
+const authenticateToken = require("../midddleware/authenticateToken"); 
 
 const {
   createTask,

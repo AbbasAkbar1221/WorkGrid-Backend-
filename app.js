@@ -25,7 +25,8 @@ const connectDB = async () => {
 
 // Middleware setup
 const corsOptions = {
-  origin: "http://localhost:3000",
+  // origin: "http://localhost:3000",
+  origin:'work-grid-frontend-eeoq3688s-abbas-akbars-projects.vercel.app',
   credentials: true,
 };
 
