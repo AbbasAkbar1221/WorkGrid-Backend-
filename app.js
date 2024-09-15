@@ -28,6 +28,7 @@ const corsOptions = {
   // origin: "http://localhost:3000",
   origin:['http://localhost:3000','https://work-grid-frontend.vercel.app/'],
   credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization'], // Explicitly allow required headers
   optionsSuccessStatus: 200,
 };
 
@@ -38,8 +39,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser()); // Use cookie-parser middleware
 
 // Middleware for CORS
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Credentials", true);
+//   next();
+// });
+
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Credentials", true);
+  res.header("Access-Control-Allow-Origin", req.headers.origin); // Allow specific origin
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With");
   next();
 });
 
@@ -63,7 +72,12 @@ const startServer = async () => {
 
 startServer();
 
-app.use((req, res) => {
+// app.use((req, res) => {
+//   console.error(err.stack);
+//   res.status(500).send("Something broke!");
+// });
+
+app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Something broke!");
 });
