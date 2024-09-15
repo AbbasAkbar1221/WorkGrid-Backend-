@@ -26,11 +26,13 @@ const connectDB = async () => {
 // Middleware setup
 const corsOptions = {
   // origin: "http://localhost:3000",
-  origin:['https://work-grid-frontend.vercel.app/','http://localhost:3000'],
+  origin:['http://localhost:3000','https://work-grid-frontend.vercel.app/'],
   credentials: true,
+  optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));  // Handle preflight requests for all routes
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser()); // Use cookie-parser middleware
